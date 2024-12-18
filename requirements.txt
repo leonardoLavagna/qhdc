@@ -1,0 +1,8 @@
+tensorflow==2.15.0
+scipy==1.11.4
+numpy==1.25.2
+matplotlib==3.7.1
+qiskit==1.1.1
+qiskit-algorithms==0.3.0
+tweedledum==1.1.1
+qiskit_aer==0.14.2
