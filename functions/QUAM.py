@@ -30,6 +30,7 @@ from qiskit_algorithms import Grover
 from qiskit.primitives import Sampler
 from typing import List, Tuple
 import numpy as np
+from functions.patterns_utilities import generate_expression
 
 
 def get_pattern(n: int, s) -> str:
