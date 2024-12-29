@@ -7,6 +7,7 @@ Here you can find the code we use in some machine learning applications using [H
 * `functions` contains utilities to work with the proposed qHDC framework on toy machine learning tasks (cf. `notebooks`).
 * `notebooks` contains minimal example notebooks showing possible applications for the proposed architecture.
 * `requirements.txt` contains the requirements (install the file before using the code in this repository)
+* `LICENCE.txt` MIT License
 
 ## Use this repository
 If you want to use the code in this repository in your projects, please cite explicitely our work, and
