@@ -14,6 +14,8 @@
 #   combining two circuits with entanglement specified by a pattern.
 # - create_rotation_circuit(n, theta): Creates a quantum circuit applying a general rotation
 #   to every qubit, using the specified angle.
+# - generate_random_circuit_from_sequence(sequence,n,depth): Generate a random quantum circuit
+#   with high probability of measuring |0> given a (DNA) sequence.
 #
 # © Leonardo Lavagna 2025
 # @ NESYA https://github.com/NesyaLab
