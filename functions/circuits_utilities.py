@@ -22,7 +22,8 @@
 #------------------------------------------------------------------------------
 
 
-from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister
+from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister, transpile
+from qiskit_aer import Aer
 import random
 import numpy as np
 
