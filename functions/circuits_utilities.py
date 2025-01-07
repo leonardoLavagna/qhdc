@@ -152,13 +152,13 @@ def generate_random_circuit_from_sequence(sequence, n=3, depth=5):
     Returns:
         QuantumCircuit: A quantum circuit that has a high probability of measuring the zero state.
     """
-    qc = QuantumCircuit(num_qubits)
+    qc = QuantumCircuit(n)
     # Apply Hadamard to introduce superposition
-    for qubit in range(num_qubits):
+    for qubit in range(n):
         qc.h(qubit)
     # Random gates with bias towards |0>
     for _ in range(depth):
-        for qubit in range(num_qubits):
+        for qubit in range(n):
             if np.random.rand() < 0.7: 
                 qc.rz(np.random.uniform(0, np.pi / 4), qubit)
             else:
