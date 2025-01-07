@@ -15,7 +15,10 @@
 # - create_rotation_circuit(n, theta): Creates a quantum circuit applying a general rotation
 #   to every qubit, using the specified angle.
 # - generate_random_circuit_from_sequence(sequence,n,depth): Generate a random quantum circuit
-#   with high probability of measuring |0> given a (DNA) sequence.
+#   with high probability of measuring the zero state given a (DNA) sequence.
+# - measure_zero_probability(qc): Execute a circuit and calculate the probability of measuring 
+#   the zero state
+#
 #
 # © Leonardo Lavagna 2025
 # @ NESYA https://github.com/NesyaLab
@@ -163,3 +166,21 @@ def generate_random_circuit_from_sequence(sequence, n=3, depth=5):
     
     qc.measure_all()
     return qc
+
+def measure_zero_probability(qc):
+    """
+    Execute a circuit and calculate the probability of measuring the zero state.
+
+    Args: 
+        qc (QuantumCircuit): A quantum circuit.
+
+    Returns:
+        float: the probability of measuring the zero state
+    """
+    simulator = Aer.get_backend('qasm_simulator')
+    t_qc = transpile(qc, backend=simulator)
+    job = simulator.run(t_qc)
+    result = job.result()
+    counts = result.get_counts()
+    p_zero = counts.get('0' * qc.num_qubits, 0) / 1024
+    return p_zero
