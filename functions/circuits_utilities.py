@@ -134,3 +134,29 @@ def create_rotation_circuit(n: int, theta: float) -> QuantumCircuit:
         qc.rz(theta, qr[qubit])
 
     return qc
+
+def generate_random_circuit_from_sequence(sequence, n=3, depth=5):
+    """
+    Generate a random quantum circuit with high probability of measuring |0> given a (DNA) sequence.
+
+    Args: 
+        sequence (List[char]): A list of (DNA) strings.
+        n (int): Number of qubits (default 3).
+        depth (int): Depth (default 5).
+    Returns:
+        QuantumCircuit: A quantum circuit that has a high probability of measuring the zero state.
+    """
+    qc = QuantumCircuit(num_qubits)
+    # Apply Hadamard to introduce superposition
+    for qubit in range(num_qubits):
+        qc.h(qubit)
+    # Random gates with bias towards |0>
+    for _ in range(depth):
+        for qubit in range(num_qubits):
+            if np.random.rand() < 0.7: 
+                qc.rz(np.random.uniform(0, np.pi / 4), qubit)
+            else:
+                qc.rx(np.random.uniform(0, np.pi), qubit)
+    
+    qc.measure_all()
+    return qc
