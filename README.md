@@ -3,7 +3,8 @@ A quantum Hyper-Dimensional Computing (qHDC) framework in Qiskit.
 
 ## What's in here?
 Here you can find the code we use in some machine learning applications using [Hyper-Dimensional Computing (HDC)](https://en.wikipedia.org/wiki/Hyperdimensional_computing) frameworks.
-* `documentation` contains two minimal documentation notebooks about the utilities in this repository.
+* `data`contains the datasets for a test classification task of small DNA sequences (nullomers), corresponding to the application `clustering_task.ipynb` in the `notebooks` directory.
+* `documentation` contains a minimal documentation notebooks about the utilities in this repository.
 * `functions` contains utilities to work with the proposed qHDC framework on toy machine learning tasks (cf. `notebooks`).
 * `notebooks` contains minimal example notebooks showing possible applications for the proposed architecture.
 * `requirements.txt` contains the requirements (install the file before using the code in this repository)
