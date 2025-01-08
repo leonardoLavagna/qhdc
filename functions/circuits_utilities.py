@@ -19,7 +19,6 @@
 # - measure_zero_probability(qc): Execute a circuit and calculate the probability of measuring 
 #   the zero state
 #
-#
 # © Leonardo Lavagna 2025
 # @ NESYA https://github.com/NesyaLab
 #------------------------------------------------------------------------------
