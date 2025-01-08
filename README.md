@@ -6,7 +6,7 @@ Here you can find the code we use in some machine learning applications using [H
 * `data` contains the datasets for a test classification task of small DNA sequences (nullomers), corresponding to the application `clustering_task.ipynb` in the `notebooks` directory.
 * `documentation` contains a minimal documentation notebooks about the utilities in this repository.
 * `functions` contains utilities to work with the proposed qHDC framework on toy machine learning tasks (cf. `notebooks`).
-* `notebooks` contains minimal example notebooks showing possible applications for the proposed architecture.
+* `notebooks` contains minimal example notebooks showing possible applications for the proposed architectures.
 * `requirements.txt` contains the requirements (install the file before using the code in this repository)
 * `LICENSE.txt` MIT License
 
