@@ -22,7 +22,7 @@
 #------------------------------------------------------------------------------
 
 
-from qiskit import QuantumCircuit
+from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister
 from typing import List, Tuple, Dict
 import random
 import hashlib
