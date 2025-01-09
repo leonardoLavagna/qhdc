@@ -15,15 +15,19 @@
 # - compress(binary_string, k): Compress a binary string to a fixed length k using SHA-256 hashing.
 # - retrieve_original_from_compressed(compressed_string): Retrieve the original binary string from the compressed string using a lookup table.
 # - find_keys_by_value(d, target_value): Find all keys in a dictionary that have a specific target value.
+# - encode_bitstring(bitstring qr,cr, inverse): Create a quantum circuit for constructing the quantum superposition of the bitstring.
 #
 # © Leonardo Lavagna 2025
 # @ NESYA https://github.com/NesyaLab
 #------------------------------------------------------------------------------
 
 
+from qiskit import QuantumCircuit
 from typing import List, Tuple, Dict
 import random
 import hashlib
+import math
+import numpy as np
 from scipy.spatial import distance
 
 
@@ -152,3 +156,42 @@ def find_keys_by_value(d: Dict, target_value) -> List:
     """
     keys = [key for key, value in d.items() if value == target_value]
     return keys
+
+
+def encode_bitstring(bitstring: str, qr: QuantumRegister,
+                     cr: ClassicalRegister, inverse=False) -> QuantumCircuit:
+    """
+    Create a quantum circuit for constructing the quantum superposition of the bitstring.
+
+    Args:
+        bitstring (str): Binary string to encode in the quantum circuit.
+        qr (QuantumRegister): Quantum register to use for the circuit.
+        cr (ClassicalRegister): Classical register to use for the circuit.
+        inverse (bool): If True, creates the inverse of the encoding circuit.
+
+    Returns:
+        QuantumCircuit: Quantum circuit with the encoded bitstring.
+
+    Raises:
+        AssertionError: If the length of the bitstring is less than 2.
+    """
+    n = math.ceil(math.log2(len(bitstring))) + 1
+    assert n > 2, "the length of bitstring must be at least 2"
+    qc = QuantumCircuit(qr, cr)
+    desired_vector = np.array([ 0.0 for i in range(2**n) ])
+    amplitude = np.sqrt(1.0/2**(n-1))
+    for i, b in enumerate(bitstring):
+        pos = i * 2
+        if b == "1":
+            pos += 1
+        desired_vector[pos] = amplitude
+    desired_vector = desired_vector / np.linalg.norm(desired_vector)
+    if not inverse:
+        qc.initialize(desired_vector, qr)
+        qc.barrier(qr)
+    else:
+        desired_vector_real = np.real(desired_vector)
+        qc.initialize(desired_vector_real,qr)
+        for i in range(n):
+            qc.measure(qr[i], cr[i])
+    return qc
