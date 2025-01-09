@@ -1,3 +1,4 @@
+pylatexenc
 scipy==1.11.4
 qiskit==1.1.1
 qiskit-algorithms==0.3.0
